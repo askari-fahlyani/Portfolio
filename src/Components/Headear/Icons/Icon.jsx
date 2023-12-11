@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import HeaderContext from '../../../Context/HeaderContext';
 function Icon({title,id,relatedIcon}) {
-    const [isHovered, setIsHovered] = useState(false);
 
-const handleMouseEnter = ()=>{
-setIsHovered(true)
-}
-const handleMouseLeave = ()=>{
-setIsHovered(false)
-}
     return ( 
-        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='m-[8px] '>
+        <div  className='m-[8px] '>
             {relatedIcon}
         </div>
      );

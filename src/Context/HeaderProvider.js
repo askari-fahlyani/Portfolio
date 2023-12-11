@@ -1,11 +1,13 @@
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import React, { useState, Children } from "react";
+import HeaderContext from "./HeaderContext";
 
-export const navigationItems = [
+function HeaderProvider({ children }) {
+  const [isHovered, setIsHovered] = useState(false);
+   const [navigationItems,setNavigationItems] =useState([
     {
         tilte:'Home',
         id: '1',
-        isActive:false,
+        isActive:true,
         defaultActive:false
     },
     {
@@ -44,17 +46,17 @@ export const navigationItems = [
         isActive:false,
         defaultActive:false
     }
-]
+]) 
+const handleItemsClick = (itemId)=>{
+    setNavigationItems((navigationItems)=>
+        navigationItems.map((item)=>item.id===itemId?{...item,isActive:true}:{...item,isActive:false})
+    )
+}
+  return ( 
+    <HeaderContext.Provider value={{ isHovered, setIsHovered,navigationItems,setNavigationItems,handleItemsClick }}>
+      {children}
+    </HeaderContext.Provider>
+  );
+}
 
-export const MyIcons = [
-    {
-        title:'github',
-        id:'1',
-        relatedIcon:<FaGithub size={'30px'} color="blue" title={'github'} />
-    },
-    {
-        title:'linkedin',
-        id:'2',
-        relatedIcon:<FaLinkedin size={'30px'} color="green" title={'linkedin'}  />
-    },
-]
+export default HeaderProvider;

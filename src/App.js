@@ -1,6 +1,8 @@
 import './Style/Style.css'
 import Header from './Components/Headear/Header';
 
+
+
 function App() {
   return (
     <div className="flex justify-center" >

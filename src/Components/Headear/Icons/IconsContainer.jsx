@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {MyIcons} from '../../Datas/MyData'
-import { FaGithub } from "react-icons/fa";
+import {MyIcons} from '../../../Datas/MyData'
 import Icon from './Icon';
 function Icons() {
     return ( 
