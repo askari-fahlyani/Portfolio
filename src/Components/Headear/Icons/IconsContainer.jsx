@@ -1,14 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import {MyIcons} from '../../../Datas/MyData'
+import React, { useState, useContext } from 'react';
 import Icon from './Icon';
+import HeaderContext from '../../../Context/HeaderContext';
+import { iconData } from '../../../Datas/MyData';
+
 function Icons() {
-    return ( 
-        <div className='flex w-[30%] justify-end '
-        
-        >
-            {MyIcons.map((item)=><Icon title={item.title} key={item.id} id={item.id} relatedIcon={item.relatedIcon} />)}
+    const [myIcons, setMyIcons] = useState(iconData); // Corrected this line
+    const { darkMode } = useContext(HeaderContext);
+
+    return (
+        <div className='flex w-[30%] justify-end'>
+            {myIcons.map(({ id, title, icon: IconComponent }) => (
+                <IconComponent
+                    key={id}
+                    size={'30px'} 
+                    color={darkMode ? '#8997b1' : undefined} 
+                    title={title} 
+                />
+            ))}
         </div>
-     );
+    );
 }
 
 export default Icons;
